@@ -7,15 +7,15 @@ import {useState} from 'react'
 function App() {
   // I want to pass down state and props to two different children, so I need to have the that initialized here so that I can pass it down. 
 
-  const [name, setName] = useState('')
-  const [textInput, setTextInput] = useState('')
+  // initialized tweets here because both the feed and createtweet component needs to be able to access this data.
   const [tweets, setTweets] = useState([])
+  // this is lowkey like a global variable and the kids have access to this data to it bc the parent has this value. 
 
   return (
     <>
       <h1>Fake Twitter.con</h1>
-      <CreateTweet textInput={textInput} setTextInput={setTextInput} tweets={tweets} setTweets={setTweets} name={name} setName={setName}/>
-      <Feed textInput={textInput} setTextInput={setTextInput} tweets={tweets} setTweets={setTweets} name={name} setName={setName}/>
+      <CreateTweet tweets={tweets} setTweets={setTweets}/>
+      <Feed tweets={tweets} setTweets={setTweets}/>
     </>
   );
 }
